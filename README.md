@@ -67,3 +67,43 @@ Am facut de pe [overthewire](https://overthewire.org/wargames/) urmatoarele:
 			__5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu__
 
 ## Ziua 5 (20.06)
+
+12->13 := am tot dezarhivat pana am ajuns la rezultat
+		  comenzi folosite:
+1. gunzip <Nume_Fis>
+2. bunzip2 <Nume_Fis>
+3. tar xf <Nume_Fis>		 
+		 __8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL__
+
+13->14 := ssh -i sshkey.private bandit14@localhost
+		  __4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e__
+
+14->15 := nc localhost 30000 (dupa am introdus parola de mai sus)e
+		  __BfMYroe26WYalil77FoDi9qh59eK5xNr__	
+
+15->16 := ncat localhost 30001 --ssl
+		  __cluFn7wTiGryunymYOu4RcffSxQluehd__
+		  
+16->17 := nmap -p 31000-32000 localhost (asa am vazut ce porturi sunt activa si care nu sunt active)
+		  ncat localhost 31790 --ssl (si am introdus parola de mai sus)
+		  ssh -i piv_pass bandit17@bandit.labs.overthewire.org -p 2220
+		  (in piv_pass am copiat cheia obtinuta anterior)
+
+17->18 := diff passwords.new passwords.old
+ __kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd__
+		  
+18->19 := ssh -t bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh
+		  cat readme
+	__IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x__
+		  
+19->20 := ./bandit20-do cat /etc/bandit_pass/bandit20 (ne folosim de acel executabil pentru a executa comenzi cu drepturile ownerului care a creat fisierul)
+
+__GbKksEFF4yrVs6il55v6gwY5aVje5f0j__
+	
+20->21 :=  (este nevoie de 2 terminale);
+	       nc -lvp 4452 (serverul asculta pe portul 4452, se pot face doar conexiuni locale);
+		  ./suconnect 4452 (ma conectez ; pe un alt terminal);
+		  (copiez parola );
+		   (de pe primul terminal scriu parola pt bandit 20, adica cea mai sus)	;
+		   (obtin parola pe al doilea terminal);
+		   __gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr__
