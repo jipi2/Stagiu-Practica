@@ -187,7 +187,7 @@ done
 
 		  3ba3118a22e93127a4ed485be72ef5ea
 
-## Ziua 6 (21.06)
+## Ziua 7 (21.06)
 
 27->28 := comenzi
 
