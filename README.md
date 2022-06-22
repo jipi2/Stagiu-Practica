@@ -1,5 +1,5 @@
 # Stagiu Practica
-
+# Bandit
 
 ## Ziua 1 (14.06.2022)
 Am vorbit despre ce ne-ar placea sa lucram.
@@ -186,3 +186,108 @@ done
 26->27 := ./bandit27-do cat /etc/bandit_pass/bandit27
 
 		  3ba3118a22e93127a4ed485be72ef5ea
+
+## Ziua 6 (21.06)
+
+27->28 := comenzi
+
+		  git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+		  cd repo
+		  cat README
+		  0ef186ac70e04ea33b4c1853d2526fa2
+		  
+28->29 := comenzi
+
+		  git clone ssh://bandit28-git@localhost/home/bandit28-git/repo
+		  git log (putem vedea toate commit-urile facute pana in momentul de fata)
+		  git checkout c086d11a00c0648d095d04c089786efef5e01264 (putem vedea cum arata README.md la momentul celui de-al doilea commit)
+		  cat README.md
+		  bbc96594b4e001778eee9975372716b2
+		  
+29->30 := comenzi
+
+	      git branch -a (vedem alte branch-uri)
+		  git checkout dev (schimbam branchul)
+		  cat README.md
+		  5b90576bedb2cc04c86a9e924ce42faf
+
+30->31 := comenzi
+
+		  git tag
+		  git show secret
+		  47e603bb428404d265f59c42920d81e5
+		  
+31->32 := comenzi
+
+		  (am creat fisierul key.txt)
+		  (nu am putut pune pe git nimic pt ca in fisier .gitignore erau fisiere de tipul *.txt)
+		  (am modificat .gitignore)
+		  git add key.txt
+		  git commit -m "key"
+		  git push origin master
+		  56a9bf19c63d650ce78e6ec0354ee45e
+		  
+32->33 := comenzi
+
+		  (shellul nu recunoaste comenzile deoarece litere sunt majuscule)
+		  $0 (revenim la lowercase)
+		  cat /etc/bandit_pass/bandit33
+		 c9c3199ddf4121b10cf581a98d51caee
+
+# Natas
+
+0->1 := __gtVrDuiDfck831PqWsLEZy5gyDz1clto__
+		(parola era intr-un comentariu din sursa paginii)
+		
+1->2 := __ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi__
+		(parola era intr-un comentariu din sursa paginii) + (ctrl+U pentru a vedea sursa)
+		  
+2->3 := __sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14__
+		(am accesat index of files)
+
+# PicoCTF
+
+__flag_shop__:
+-am introdus un numar mare de flaguri false astfel incat acel numer inmultit cu 900 sa fie negativ
+-fiind negativ, scazand acel numar din balanta, de fapt am adunat la balanta
+-asa am avut bani pt flag
+
+__plumbing__
+-nc jupiter.challenges.picoctf.org 4427 | grep pico
+-picoCTF{digital_plumb3r_5ea1fbd7}
+
+__First Find__
+-find . -name uber-secret.txt -exec cat {} +
+picoCTF{f1nd_15_f457_ab443fd1}
+
+__The numbers__
+```
+#!/bin/bash
+
+letters=(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z)
+numbers=(16 9 3 15 3 20 6 \{ 20 8 5 14 21 13 2 5 18 19 13 1 19 15 14 \})
+
+for i in ${numbers[@]}
+do
+	if [[ $i == \{ || $i == \} ]]
+	then
+		echo $i >> temp.txt
+	else
+		echo ${letters[$i-1]} >> temp.txt
+	fi
+
+done
+cat temp.txt | tr -d "\n"
+rm temp.txt
+```
+__13__
+tr "[a-m][A-M][n-z][N-Z]" "[n-z][N-Z][a-m][A-M]"
+picoCTF{not_too_bad_of_a_problem}
+
+__BigZip__
+ls | grep -r pico
+picoCTF{gr3p_15_m4g1c_ef8790dc}
+
+__Disk, disk, sleuth!__
+strings dds1-alpine.flag.img | grep pico
+picoCTF{f0r3ns1c4t0r_n30phyt3_a69a712c}
