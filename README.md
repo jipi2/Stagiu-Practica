@@ -520,9 +520,9 @@ CSS makes the page look nice, and yes, it also has part of the flag. Here's part
 
 Part 3: t_0f_pl4c (era in robots.txt)
 
-Part 4: 3s_2_lO0k
+Part 4: 3s_2_lO0k (era in .htaccess)
 
-Congrats! You completed the scavenger hunt. Part 5: _a69684fd}
+Congrats! You completed the scavenger hunt. Part 5: _a69684fd} (era in .DS_Store)
 
 __Enhance!__
 
@@ -555,3 +555,15 @@ __RPS__
 (aceasta verficare se face cu strstr, fiind o vulnerabilitate)
 
 (pt a castiga de fiecare data trebuie sa introducem "rockpaperscissors" pentru ca astfel, strstr mereu va returna ceva diferit de null, ceea ce inseamna runda castigata pentru noi)
+
+__information__
+
+(am folosit un tool numit exiftool pentru a vedea metadate despre poza)
+
+(se poate observa ca in dreptul licentei este un sir de caractere care ar putea fi o codificare base64)
+
+(am decodificat si am obtinut flagul)
+
+exiftool cat.jpg | grep License | cut -f2 -d":" | egrep -o "[a-zA-Z0-9]+" | base64 -d
+
+*picoCTF{the_m3tadata_1s_modified}*
