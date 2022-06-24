@@ -66,7 +66,7 @@ Am facut de pe [overthewire](https://overthewire.org/wargames/) urmatoarele:
 11->12 := cat data.txt | tr "[a-m][A-M][n-z][N-Z]" "[n-z][N-Z][a-m][A-M]"
 			__5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu__
 
-## Ziua 5 (20.06)
+## Ziua 5 (20.06.2022)
 
 12->13 := am tot dezarhivat pana am ajuns la rezultat
 		  comenzi folosite:
@@ -108,7 +108,7 @@ __GbKksEFF4yrVs6il55v6gwY5aVje5f0j__
 		   (obtin parola pe al doilea terminal);
 		   __gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr__
 
-## Ziua 6 (21.06)
+## Ziua 6 (21.06.2022)
 
 21->22 := m-am uitat la: [link](https://www.youtube.com/watch?v=UlVqobmcPuM&ab_channel=OneByteAtATime) , [link](https://www.youtube.com/watch?v=v952m13p-b4&t=56s&ab_channel=Linode).
 
@@ -187,7 +187,7 @@ done
 
 		  3ba3118a22e93127a4ed485be72ef5ea
 
-## Ziua 7 (21.06)
+## Ziua 7 (22.06.2022)
 
 27->28 := comenzi
 
@@ -304,6 +304,8 @@ __Disk, disk, sleuth!__
 strings dds1-alpine.flag.img | grep pico
 
 *picoCTF{f0r3ns1c4t0r_n30phyt3_a69a712c}*
+
+## Ziua 8 (23.06.2022)
 
 __So Meta__
 identify -verbose pico_img.png | grep pico
