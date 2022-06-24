@@ -11,7 +11,7 @@ Am urmarit videocliptul: [Let's Play/Hack - Pwn Adventure 3: Pwnie Island](https
 
 ## Ziua 3 (16.06.2022)
 Am instalat serverul privat al jocului utilizand [docker](https://github.com/LiveOverflow/PwnAdventure3) si clientul pe windows.
-Nu am resuti sa instalez cientul pentru linux. Am urmarit si acest [video](https://www.youtube.com/watch?v=rOTqprHv1YE&t=720s&ab_channel=Simplilearn).
+Nu am reusit sa instalez clientul pentru linux. Am urmarit si acest [video](https://www.youtube.com/watch?v=rOTqprHv1YE&t=720s&ab_channel=Simplilearn).
 
 ## Ziua 4 (17.06.2022)
 Am incercat in continuare sa finalizez instalarea clientului pentru linux, am incercat site-urile: 
