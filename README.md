@@ -248,17 +248,24 @@ done
 # PicoCTF
 
 __flag_shop__:
+
 -am introdus un numar mare de flaguri false astfel incat acel numer inmultit cu 900 sa fie negativ
+
 -fiind negativ, scazand acel numar din balanta, de fapt am adunat la balanta
+
 -asa am avut bani pt flag
 
 __plumbing__
+
 -nc jupiter.challenges.picoctf.org 4427 | grep pico
--picoCTF{digital_plumb3r_5ea1fbd7}
+
+*picoCTF{digital_plumb3r_5ea1fbd7}*
 
 __First Find__
+
 -find . -name uber-secret.txt -exec cat {} +
-picoCTF{f1nd_15_f457_ab443fd1}
+
+*picoCTF{f1nd_15_f457_ab443fd1}*
 
 __The numbers__
 ```
@@ -281,13 +288,268 @@ cat temp.txt | tr -d "\n"
 rm temp.txt
 ```
 __13__
+
 tr "[a-m][A-M][n-z][N-Z]" "[n-z][N-Z][a-m][A-M]"
-picoCTF{not_too_bad_of_a_problem}
+
+*picoCTF{not_too_bad_of_a_problem}*
 
 __BigZip__
+
 ls | grep -r pico
-picoCTF{gr3p_15_m4g1c_ef8790dc}
+
+*picoCTF{gr3p_15_m4g1c_ef8790dc}*
 
 __Disk, disk, sleuth!__
+
 strings dds1-alpine.flag.img | grep pico
-picoCTF{f0r3ns1c4t0r_n30phyt3_a69a712c}
+
+*picoCTF{f0r3ns1c4t0r_n30phyt3_a69a712c}*
+
+__So Meta__
+identify -verbose pico_img.png | grep pico
+
+*picoCTF{s0_m3ta_d8944929}*
+
+__extensions__
+
+atril flag.txt
+
+*picoCTF{now_you_know_about_extensions}*
+
+__basic-file-exploit__
+
+trebuia introdus "0" la intrarea in tabel (era un if in codul sursa)
+
+*picoCTF{M4K3_5UR3_70_CH3CK_Y0UR_1NPU75_1B9F5942}*
+
+__basic-mod1__
+```
+#!/bin/bash
+
+vect=`cat $1`
+cont=0
+for i in ${vect[@]}
+do
+	res=`expr $i % 37`
+	vect_mod[$cont]=$res
+	let cont++
+done 
+
+map=(A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 0 1 2 3 4 5 6 7 8 9 \_)
+
+for i in ${vect_mod[@]}
+do
+	echo ${map[$i]} >> temp.txt
+done
+
+cat temp.txt | tr -d "\n"
+rm temp.txt
+```
+*picoCTF{R0UND_N_R0UND_79C18FB3}*
+
+__basic-mod2__
+```
+#!/usr/bin/env python3
+
+import string
+
+flag = []
+
+with open("message.txt") as fis:
+	vect = fis.read()
+	vect_mod = [int(val) for val in vect.split()]
+
+	for number in vect_mod:
+		modulus = pow(number, -1, 41)
+
+	if modulus in range(1,27):
+		flag.apppend(string.ascii_uppercase[modulus-1])
+	elif modulus in range (27,37):
+		flag.apppend(string.digits[modulus-27])
+	else:
+		flag.apppend("_")
+
+print ("picoCTF{%s}" % "".join(flag))
+```
+__fixme1.py__
+
+(era o problema la identare)
+
+*picoCTF{1nd3nt1ty_cr1515_6a476c8f}*
+
+__fixme2.py__
+
+(trebuia la un if (==))
+
+*picoCTF{3qu4l1ty_n0t_4551gnm3nt_4863e11b}*
+
+__Glitch Cat__
+```
+
+flag_enc='picoCTF{gl17ch_m3_n07_' + chr(0x39) + chr(0x63) + chr(0x34) + chr(0x32) + chr(0x61) + chr(0x34) + chr(0x35) + chr(0x64) + '}'
+print(flag_enc)
+
+```
+*picoCTF{gl17ch_m3_n07_9c42a45d}*
+
+__HashingJobApp__
+
+*picoCTF{4ppl1c4710n_r3c31v3d_674c1de2}*
+
+__PW Crack 1__
+
+(am luat parola din codul sursa)
+
+*picoCTF{545h_r1ng1ng_1b2fd683}*
+
+__PW Crack 2__
+```
+
+flag_enc=chr(0x64) + chr(0x65) + chr(0x37) + chr(0x36)
+print(flag_enc)
+
+```
+*picoCTF{tr45h_51ng1ng_489dea9a}*
+
+__PW Crack 3__
+
+am incercat fiecare parola din lista aceea,
+parola era: *1ea2*
+
+*picoCTF{m45h_fl1ng1ng_6f98a49f}*
+
+__PW Crack 4__
+```
+#!/bin/bash
+
+list=("6288", "6152", "4c7a", "b722", "9a6e", "6717", "4389", "1a28", "37ac", "de4f", "eb28", "351b", "3d58", "948b", "231b", "973a", "a087", "384a", "6d3c", "9065", "725c", "fd60", "4d4f", "6a60", "7213", "93e6", "8c54", "537d", "a1da", "c718", "9de8", "ebe3", "f1c5", "a0bf", "ccab", "4938", "8f97", "3327", "8029", "41f2", "a04f", "c7f9", "b453", "90a5", "25dc", "26b0", "cb42", "de89", "2451", "1dd3", "7f2c", "8919", "f3a9", "b88f", "eaa8", "776a", "6236", "98f5", "492b", "507d", "18e8", "cfb5", "76fd", "6017", "30de", "bbae", "354e", "4013", "3153", "e9cc", "cba9", "25ea", "c06c", "a166", "faf1", "2264", "2179", "cf30", "4b47", "3446", "b213", "88a3", "6253", "db88", "c38c", "a48c", "3e4f", "7208", "9dcb", "fc77", "e2cf", "8552", "f6f8", "7079", "42ef", "391e", "8a6d", "2154", "d964", "49ec")
+count=0
+
+for i in ${list[@]}
+do
+	pass[$count]=`echo $i | egrep -o "[0-9a-zA-Z]+"`
+	let count++
+done
+
+for i in ${pass[@]}
+do
+		echo $i > pass.txt
+		python3 level4.py < pass.txt | grep pico
+done
+rm pass.txt
+```
+*picoCTF{fl45h_5pr1ng1ng_ae0fb77c}*
+
+__PW Crack 5__
+
+(am modificat codul astfel incat sa nu mai fie nevoie de introducerea de la tastaura a parola)
+(toate parolele sunt citite direct din fisier si se verifica daca este cea buna)
+(de asemenea nu se mai printeaza decat flagul, nu si faptul ca o anumita parola a fost incorecta)
+```
+import hashlib
+
+### THIS FUNCTION WILL NOT HELP YOU FIND THE FLAG --LT ########################
+def str_xor(secret, key):
+    #extend key to secret length
+    new_key = key
+    i = 0
+    while len(new_key) < len(secret):
+        new_key = new_key + key[i]
+        i = (i + 1) % len(key)        
+    return "".join([chr(ord(secret_c) ^ ord(new_key_c)) for (secret_c,new_key_c) in zip(secret,new_key)])
+###############################################################################
+
+flag_enc = open('level5.flag.txt.enc', 'rb').read()
+correct_pw_hash = open('level5.hash.bin', 'rb').read()
+
+
+def hash_pw(pw_str):
+    pw_bytes = bytearray()
+    pw_bytes.extend(pw_str.encode())
+    m = hashlib.md5()
+    m.update(pw_bytes)
+    return m.digest()
+
+
+def level_5_pw_check(line):
+    user_pw = line
+    user_pw_hash = hash_pw(user_pw)
+    
+    if( user_pw_hash == correct_pw_hash ):
+        print("Welcome back... your flag, user:")
+        decryption = str_xor(flag_enc.decode(), user_pw)
+        print(decryption)
+        return
+    #print("That password is incorrect")
+
+
+
+with open("/home/jipi/work/newDown/dictionary.txt") as dict:
+    lines = dict.readlines()
+    for line in lines:
+        line = line.strip()
+        level_5_pw_check(line)
+```
+
+*picoCTF{h45h_sl1ng1ng_fffcda23}*
+
+__runme.py__
+
+python3 runme.py
+
+*picoCTF{run_s4n1ty_run}*
+
+__Serpentine__
+
+(am modificat rezultatul uni if)
+```
+ elif choice == 'b':
+      print('\nOops! I must have misplaced...wait a second, here it is:')
+      print_flag()
+      print("\n\n")
+```
+*picoCTF{7h3_r04d_l355_7r4v3l3d_8e47d128}*
+
+__Scavenger Hunt__
+
+ Here's the first part of the flag: picoCTF{t (era in source code)
+
+CSS makes the page look nice, and yes, it also has part of the flag. Here's part 2: h4ts_4_l0  (era in CSS)
+
+Part 3: t_0f_pl4c (era in robots.txt)
+
+Part 4: 3s_2_lO0k
+
+Congrats! You completed the scavenger hunt. Part 5: _a69684fd}
+
+__Enhance!__
+
+am folosit comanda strings, flagul era in ultimele linii
+
+*picoCTF{3nh4nc3d_aab729dd}*
+
+__Lookey here__
+
+cat anthem.flag.txt | grep pico
+
+*picoCTF{gr3p_15_@w3s0m3_4c479940}*
+
+__patchme.py__
+
+(am modificat parola in interiorul codului)
+
+*picoCTF{p47ch1ng_l1f3_h4ck_c4a4688b}*
+
+__Vigerne__
+
+(am folosit site-ul: [boxentrig](https://www.boxentriq.com/code-breaking/vigenere-cipher) pentru decodificare)
+
+*picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_ae82272q}*
+
+__RPS__
+
+(pentru a stabili cine a castigat, programul verifica daca utilizatorul a introdus instrumentul care distruge instrumentul ales de computer)
+
+(aceasta verficare se face cu strstr, fiind o vulnerabilitate)
+
+(pt a castiga de fiecare data trebuie sa introducem "rockpaperscissors" pentru ca astfel, strstr mereu va returna ceva diferit de null, ceea ce inseamna runda castigata pentru noi)
